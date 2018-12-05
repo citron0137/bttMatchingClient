@@ -1,0 +1,17 @@
+torrent status none인 데이터 받아오기
+
+매칭 해볼 torrent 선택 후, torrent status update
+
+torrent 파일 다운로드
+
+torrent파일을 통해 영상 파일 다운로드
+
+다운로드한 영상 파일에서 프레임 뽑아오기
+
+다운로드한 영상파일 삭제
+
+뽑은 프레임 에서 해시 추출
+
+프레임 해시와 original hash 매칭
+
+매칭되는 데이터 저장 했다가 한번에 업로드
