@@ -21,8 +21,8 @@ if __name__ == '__main__':
     '''
     os.mkdir('tmp')
     os.mkdir('tmp/torrent')
-    '''
     os.mkdir('tmp/subFiles')
+    '''
     #start
     torrentSeq = sys.argv[1] #get torrent seq
     masterApi.updateTorrentState(torrentSeq, 'analyzing')   # torrent status update
