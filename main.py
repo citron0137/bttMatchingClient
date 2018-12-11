@@ -18,7 +18,21 @@ import iframe_extraction
 import save_hash
 import compare_hash
 
-if __name__ == '__main__':
+def getList(stateNumber):
+    masterApi = apiHandler.Rest()
+    torrents = masterApi.get("torrent_file")
+   
+    torrentList = []
+    for torrent in torrents :
+        print (torrent['state'])
+        if (torrent['state'] == stateNumber):
+            torrentList.append(torrent)
+    
+    for torrent in torrentList:
+        print (torrent['seq'])
+    return torrentList
+
+def doWork(torrentSeq):
     #setting
     masterApi = apiHandler.Rest()
     
@@ -28,7 +42,6 @@ if __name__ == '__main__':
     os.mkdir('tmp/frames')
     
 #start
-    torrentSeq = sys.argv[1] #get torrent seq
     masterApi.updateTorrentState(torrentSeq, 'analyzing')   # torrent status update
     torrentFilePath = masterApi.downloadTorrentBySeq(torrentSeq, './tmp/torrent/')# torrent file download
     print(torrentFilePath)
@@ -57,9 +70,14 @@ if __name__ == '__main__':
         save_hash.hashing('tmp/frames'+'/'+video[0])
 
         #TODO matching frame hash wiht original hash #TODO uploade matched data
-        compare_hash.compare('tmp/frames'+'/'+video[0]+'/'+video[0]+'.hash')
+        compare_hash.compare('tmp/frames'+'/"'+video[0]+'"/"'+video[0]+'".hash')
 
         
 
     #TODO delete folder
     os.system('rm -rf tmp')
+
+if __name__ == '__main__':
+    torrents = getList(stateNumber) #get torrent seq
+    for torrent in torrents:
+        doWork(torrent['seq'])
