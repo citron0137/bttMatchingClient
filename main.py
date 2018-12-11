@@ -26,7 +26,6 @@ if __name__ == '__main__':
     os.mkdir('tmp/torrent')
     os.mkdir('tmp/subFiles')
     os.mkdir('tmp/frames')
-    os.mkdir('tmp/frames')
     
 #start
     torrentSeq = sys.argv[1] #get torrent seq
